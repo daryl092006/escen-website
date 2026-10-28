@@ -1,0 +1,46 @@
+{
+  "name": "escen-website",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.8.2",
+    "@nuxt/eslint": "^1.10.0",
+    "@nuxt/hints": "^1.0.0-alpha.2",
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/scripts": "^0.13.0",
+    "@nuxt/test-utils": "^3.20.1",
+    "@nuxt/ui": "^4.2.1",
+    "@nuxtjs/sitemap": "^8.2.1",
+    "@pinia/nuxt": "^0.11.3",
+    "@primevue/nuxt-module": "^4.5.5",
+    "@primevue/themes": "^4.5.4",
+    "@unhead/vue": "^2.0.19",
+    "axios": "^1.16.1",
+    "better-sqlite3": "^12.4.6",
+    "countries-list": "^3.2.2",
+    "eslint": "^9.39.1",
+    "flag-icons": "^7.5.0",
+    "intl-tel-input": "^25.15.0",
+    "lucide-vue-next": "^0.555.0",
+    "nuxt": "^4.2.1",
+    "primevue": "^4.5.5",
+    "sweetalert": "^2.1.2",
+    "toastr": "^2.1.4",
+    "typescript": "^5.9.3",
+    "v-phone-input": "^5.1.4",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3",
+    "vue-tel-input": "^9.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "baseline-browser-mapping": "^2.10.13"
+  }
+}

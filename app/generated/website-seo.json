@@ -1,0 +1,223 @@
+{
+  "origin": "https://escen.university",
+  "pages": {
+    "/blogs": "Blog ESCEN",
+    "/brochures": "Brochures ESCEN",
+    "/cgu": "Conditions Générales d'Utilisation",
+    "/confidentialite": "Politique de Confidentialité",
+    "/connexion": "Espace étudiant ESCEN",
+    "/contact": "Contact",
+    "/formations/certificats": "NOS CERTIFICATS",
+    "/formations/executive-education/finance-digitale": "Executive Master en Finance Digitale",
+    "/formations/executive-education": "EXECUTIVE EDUCATION",
+    "/formations/executive-education/management-projets-transformation-digitale": "Executive Master Management de Projets & Transformation Digitale",
+    "/formations": "Nos Formations",
+    "/formations/licence-professionnelle/finance-digitale": "Licence Professionnelle en Finance Digitale",
+    "/formations/licence-professionnelle": "Licences Professionnelles",
+    "/formations/licence-professionnelle/intelligence-artificielle": "Licence Professionnelle en Intelligence Artificielle & Génie Logiciel",
+    "/formations/licence-professionnelle/management-projets": "Licence Professionnelle en Management de Projets Numériques",
+    "/formations/licence-professionnelle/marketing-digital": "Licence Professionnelle en Marketing Digital & E-Commerce",
+    "/formations/master-professionnel/finance-digitale": "Master Professionnel en Finance Digitale",
+    "/formations/master-professionnel": "Master Professionnels",
+    "/formations/master-professionnel/management-projets": "Master Professionnel en Management de Projets Numériques",
+    "/formations/master-professionnel/marketing-digital": "Master Professionnel en Marketing Digital",
+    "/galerie": "Galerie",
+    "/inscription": "Candidature à ESCEN",
+    "/mentions-legales": "Mentions Légales",
+    "/politique-cookies": "Politique d'Utilisation des Cookies",
+    "/preparation-inscription": "Préparez votre dossier"
+  },
+  "details": {
+    "/blogs": {
+      "name": "Blog ESCEN",
+      "title": "Actualités et vie de l’école | ESCEN Togo",
+      "description": "Retrouvez les actualités publiées par l’ESCEN : événements, vie de l’école et échanges autour du commerce et de l’économie numérique au Togo.",
+      "image": "/valeurs/bg.jpg",
+      "type": "collection"
+    },
+    "/brochures": {
+      "name": "Brochures ESCEN",
+      "title": "Brochures des formations ESCEN | Programmes PDF",
+      "description": "Téléchargez les brochures publiées par l’ESCEN : programmes de licence, master et Executive Master, classés par formation et cycle.",
+      "image": "/logo-escen.png",
+      "type": "collection"
+    },
+    "/cgu": {
+      "name": "Conditions Générales d'Utilisation",
+      "title": "Conditions générales d’utilisation | ESCEN",
+      "description": "Consultez les conditions générales d’utilisation du site de l’ESCEN et de ses services en ligne.",
+      "image": "/valeurs/bg.jpg",
+      "type": "page"
+    },
+    "/confidentialite": {
+      "name": "Politique de Confidentialité",
+      "title": "Protection des données personnelles | ESCEN",
+      "description": "Consultez la politique de confidentialité de l’ESCEN et les informations relatives au traitement des données personnelles sur le site.",
+      "image": "/valeurs/bg.jpg",
+      "type": "page"
+    },
+    "/connexion": {
+      "name": "Espace étudiant ESCEN",
+      "title": "Connexion au portail ESCEN",
+      "description": "Accédez au portail sécurisé de l’ESCEN avec votre compte pour consulter votre espace et vos documents.",
+      "image": "/logo-escen.png",
+      "type": "page"
+    },
+    "/contact": {
+      "name": "Contact",
+      "title": "Contacter l’ESCEN à Lomé | Téléphone et adresse",
+      "description": "Contactez l’ESCEN à Lomé au +228 98 01 27 27 ou à hello@escen.university pour vous renseigner sur les formations et la candidature.",
+      "image": "/valeurs/bg.jpg",
+      "type": "contact"
+    },
+    "/formations/certificats": {
+      "name": "NOS CERTIFICATS",
+      "title": "Certificats et formations courtes | ESCEN Togo",
+      "description": "Consultez les informations sur les certificats et formations courtes de l’ESCEN. Contactez l’école pour connaître les sessions et conditions disponibles.",
+      "image": "/valeurs/bg.jpg",
+      "type": "collection"
+    },
+    "/formations/executive-education/finance-digitale": {
+      "name": "Executive Master en Finance Digitale",
+      "title": "Executive Master en Finance Digitale à Lomé, Togo | ESCEN",
+      "description": "Executive Master en Finance Digitale à l’ESCEN, à Lomé au Togo. Formation d'excellence pour les cadres et professionnels du secteur financier en Afrique",
+      "image": "/formations/financedigital.jpg",
+      "type": "course",
+      "timeRequired": "P12M"
+    },
+    "/formations/executive-education": {
+      "name": "EXECUTIVE EDUCATION",
+      "title": "Executive Masters pour professionnels | ESCEN Togo",
+      "description": "Consultez les Executive Masters de l’ESCEN en finance digitale et management de projets et transformation digitale, destinés aux professionnels.",
+      "image": "/valeurs/bg.jpg",
+      "type": "collection"
+    },
+    "/formations/executive-education/management-projets-transformation-digitale": {
+      "name": "Executive Master Management de Projets & Transformation Digitale",
+      "title": "Executive Master Management de Projets & Transformation Digitale à Lomé, Togo | ESCEN",
+      "description": "Executive Master Management de Projets & Transformation Digitale à l’ESCEN, à Lomé au Togo. Concevoir et piloter des projets numériques innovants. Gérer l’innovation digitale et accompagner la transformation des entreprises.",
+      "image": "/formations/financedigital2.jpg",
+      "type": "course",
+      "timeRequired": "P12M"
+    },
+    "/formations": {
+      "name": "Nos Formations",
+      "title": "Formations en commerce et numérique à Lomé | ESCEN",
+      "description": "Comparez les licences professionnelles, masters professionnels et Executive Masters de l’ESCEN : programmes, compétences et débouchés à Lomé, au Togo.",
+      "image": "/valeurs/bg.jpg",
+      "type": "collection"
+    },
+    "/formations/licence-professionnelle/finance-digitale": {
+      "name": "Licence Professionnelle en Finance Digitale",
+      "title": "Licence Professionnelle en Finance Digitale à Lomé, Togo | ESCEN",
+      "description": "Licence Professionnelle en Finance Digitale à l’ESCEN, à Lomé au Togo. Formation d'excellence aux métiers de la finance numérique et des fintech",
+      "image": "/formations/financedigital.jpg",
+      "type": "course",
+      "timeRequired": "P3Y"
+    },
+    "/formations/licence-professionnelle": {
+      "name": "Licences Professionnelles",
+      "title": "Licences professionnelles à Lomé, Togo | ESCEN",
+      "description": "Découvrez les licences professionnelles de l’ESCEN : finance digitale, marketing digital, projets numériques et intelligence artificielle et génie logiciel.",
+      "image": "/valeurs/bg.jpg",
+      "type": "collection"
+    },
+    "/formations/licence-professionnelle/intelligence-artificielle": {
+      "name": "Licence Professionnelle en Intelligence Artificielle & Génie Logiciel",
+      "title": "Licence Professionnelle en Intelligence Artificielle & Génie Logiciel à Lomé, Togo | ESCEN",
+      "description": "Licence Professionnelle en Intelligence Artificielle & Génie Logiciel à l’ESCEN, à Lomé au Togo. Formation d'excellence aux métiers du développement logiciel, de l'intelligence artificielle et de l'ingénierie des données",
+      "image": "/formations/intelligenceartificielle.jpg",
+      "type": "course",
+      "timeRequired": "P3Y"
+    },
+    "/formations/licence-professionnelle/management-projets": {
+      "name": "Licence Professionnelle en Management de Projets Numériques",
+      "title": "Licence Professionnelle en Management de Projets Numériques à Lomé, Togo | ESCEN",
+      "description": "Licence Professionnelle en Management de Projets Numériques à l’ESCEN, à Lomé au Togo. Formation complète pour piloter et évaluer des projets numériques dans tous les secteurs",
+      "image": "/formations/managementprojet.jpg",
+      "type": "course",
+      "timeRequired": "P3Y"
+    },
+    "/formations/licence-professionnelle/marketing-digital": {
+      "name": "Licence Professionnelle en Marketing Digital & E-Commerce",
+      "title": "Licence Professionnelle en Marketing Digital & E-Commerce à Lomé, Togo | ESCEN",
+      "description": "Licence Professionnelle en Marketing Digital & E-Commerce à l’ESCEN, à Lomé au Togo. Formation complète pour maîtriser le marketing digital et l'e-commerce en contexte africain",
+      "image": "/formations/marketingDigital.jpg",
+      "type": "course",
+      "timeRequired": "P3Y"
+    },
+    "/formations/master-professionnel/finance-digitale": {
+      "name": "Master Professionnel en Finance Digitale",
+      "title": "Master Professionnel en Finance Digitale à Lomé, Togo | ESCEN",
+      "description": "Master Professionnel en Finance Digitale à l’ESCEN, à Lomé au Togo. Formation d'excellence aux métiers de la finance digitale et de la transformation numérique des services financiers",
+      "image": "/formations/financedigital.jpg",
+      "type": "course",
+      "timeRequired": "P2Y"
+    },
+    "/formations/master-professionnel": {
+      "name": "Master Professionnels",
+      "title": "Masters professionnels à Lomé, Togo | ESCEN",
+      "description": "Consultez les masters professionnels de l’ESCEN en finance digitale, marketing digital et management de projets : programmes et candidature.",
+      "image": "/valeurs/bg.jpg",
+      "type": "collection"
+    },
+    "/formations/master-professionnel/management-projets": {
+      "name": "Master Professionnel en Management de Projets Numériques",
+      "title": "Master Professionnel en Management de Projets Numériques à Lomé, Togo | ESCEN",
+      "description": "Master Professionnel en Management de Projets Numériques à l’ESCEN, à Lomé au Togo. Formation d'excellence aux métiers du management et de la gestion de projets dans l'environnement numérique",
+      "image": "/formations/managementprojet.jpg",
+      "type": "course",
+      "timeRequired": "P18M"
+    },
+    "/formations/master-professionnel/marketing-digital": {
+      "name": "Master Professionnel en Marketing Digital",
+      "title": "Master Professionnel en Marketing Digital à Lomé, Togo | ESCEN",
+      "description": "Master Professionnel en Marketing Digital à l’ESCEN, à Lomé au Togo. Formation d'excellence aux métiers du marketing digital et de la transformation numérique des entreprises",
+      "image": "/formations/marketingDigital.jpg",
+      "type": "course",
+      "timeRequired": "P2Y"
+    },
+    "/galerie": {
+      "name": "Galerie",
+      "title": "Galerie de l’école | ESCEN Togo",
+      "description": "Découvrez les albums et photographies de la vie de l’ESCEN, de ses événements et de ses activités.",
+      "image": "/valeurs/bg.jpg",
+      "type": "collection"
+    },
+    "/": {
+      "name": "ESCEN",
+      "title": "ESCEN — Commerce et économie numérique à Lomé, Togo",
+      "description": "Découvrez l’ESCEN à Lomé : licences professionnelles, masters professionnels et Executive Masters en commerce et économie numérique.",
+      "image": "/logo-escen.png",
+      "type": "page"
+    },
+    "/inscription": {
+      "name": "Candidature à ESCEN",
+      "title": "Candidature en ligne à l’ESCEN | Déposer un dossier",
+      "description": "Préparez et déposez votre candidature à l’ESCEN : identité, dernier diplôme, formation et pièces justificatives, puis coordonnées des tuteurs et confirmation.",
+      "image": "/logo-escen.png",
+      "type": "page"
+    },
+    "/mentions-legales": {
+      "name": "Mentions Légales",
+      "title": "Mentions légales | ESCEN",
+      "description": "Consultez les mentions légales du site de l’ESCEN et les informations relatives à son édition et à son utilisation.",
+      "image": "/valeurs/bg.jpg",
+      "type": "page"
+    },
+    "/politique-cookies": {
+      "name": "Politique d'Utilisation des Cookies",
+      "title": "Politique des cookies | ESCEN",
+      "description": "Consultez les informations sur les cookies du site de l’ESCEN et la gestion de vos préférences.",
+      "image": "/valeurs/bg.jpg",
+      "type": "page"
+    },
+    "/preparation-inscription": {
+      "name": "Préparez votre dossier",
+      "title": "Préparer son dossier de candidature | ESCEN",
+      "description": "Consultez les informations de préparation du dossier avant de commencer votre candidature en ligne à l’ESCEN.",
+      "image": "/valeurs/bg.jpg",
+      "type": "page"
+    }
+  }
+}

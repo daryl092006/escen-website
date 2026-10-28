@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESCEN — Documentation Développeur</title>
+<style>
+:root {
+  --bg: #F2F4F9;
+  --surface: #FFFFFF;
+  --border: #D5DCF0;
+  --navy: #1B2D5A;
+  --navy-mid: #243D72;
+  --gold: #C8A020;
+  --gold-bg: rgba(200,160,32,0.10);
+  --text: #18213A;
+  --muted: #5C6E8A;
+  --code-bg: #E8EDF8;
+  --sidebar-w: 240px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--navy);
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+.sidebar-brand {
+  padding: 24px 20px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+.sidebar-brand .school {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  font-weight: 600;
+}
+.sidebar-brand .name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 3px;
+  font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+}
+.sidebar-brand .badge {
+  display: inline-block;
+  margin-top: 9px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(200,160,32,0.13);
+  border: 1px solid rgba(200,160,32,0.28);
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.nav-section {
+  padding: 14px 0 6px;
+}
+.nav-section + .nav-section { border-top: 1px solid rgba(255,255,255,0.06); }
+.nav-label {
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  padding: 0 20px;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+.nav-link {
+  display: block;
+  padding: 6px 20px 6px 18px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.58);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  line-height: 1.4;
+}
+.nav-link:hover {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.05);
+  border-left-color: rgba(200,160,32,0.45);
+}
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ─── MAIN ─── */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  padding: 52px 60px 96px 64px;
+  max-width: 1040px;
+}
+
+/* ─── DOC HEADER ─── */
+.doc-header {
+  padding-bottom: 28px;
+  border-bottom: 2px solid var(--navy);
+  margin-bottom: 52px;
+}
+.doc-header .eyebrow {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.doc-header h1 {
+  font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.doc-header .sub {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 64ch;
+}
+.meta-row {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.meta-chip {
+  font-size: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--navy);
+  padding: 3px 11px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+.meta-chip.gold {
+  background: var(--gold-bg);
+  border-color: rgba(200,160,32,0.35);
+  color: #7A5C00;
+}
+
+/* ─── SECTION ─── */
+.section {
+  margin-bottom: 60px;
+  scroll-margin-top: 32px;
+}
+.section-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.section > h2 {
+  font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 22px;
+}
+h3 {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 28px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--navy-mid);
+}
+p {
+  max-width: 72ch;
+  margin-bottom: 12px;
+}
+
+/* ─── STACK PILLS ─── */
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 16px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 5px 13px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+.pill-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.c-navy   { background: var(--navy); }
+.c-gold   { background: var(--gold); }
+.c-teal   { background: #2BA7A0; }
+.c-purple { background: #7B5EA7; }
+.c-green  { background: #2E8B57; }
+.c-red    { background: #C0392B; }
+.c-orange { background: #E08020; }
+
+/* ─── CODE / PRE ─── */
+code {
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  font-size: 12.5px;
+  background: var(--code-bg);
+  color: var(--navy);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+pre {
+  background: var(--navy);
+  color: #C8D6F0;
+  padding: 20px 24px;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', 'Consolas', monospace;
+  font-size: 12.5px;
+  line-height: 1.8;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+pre code { background: none; color: inherit; padding: 0; font-size: inherit; font-weight: inherit; }
+.k { color: #7EC8E3; }
+.v { color: #A8C97F; }
+.p { color: #F0B840; }
+.c { color: #4A6080; }
+.s { color: #F0B840; }
+.d { color: #8AACDB; }
+
+/* ─── TREE ─── */
+.tree {
+  background: var(--navy);
+  color: #C8D6F0;
+  padding: 20px 24px;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', 'Consolas', monospace;
+  font-size: 12.5px;
+  line-height: 1.85;
+  overflow-x: auto;
+  margin: 14px 0;
+  white-space: pre;
+}
+
+/* ─── TABLE ─── */
+.tbl-wrap { overflow-x: auto; margin: 14px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+thead th {
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  padding: 0 14px 10px;
+  border-bottom: 2px solid var(--border);
+}
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: #EEF2FB; }
+td.mono {
+  font-family: 'SFMono-Regular', 'Consolas', monospace;
+  font-size: 12.5px;
+  color: var(--navy);
+  font-weight: 600;
+}
+td.label { font-weight: 600; color: var(--navy); font-size: 13px; }
+td.desc  { color: var(--muted); font-size: 13px; }
+
+/* ─── ENDPOINTS ─── */
+.ep-list { list-style: none; margin: 10px 0; }
+.ep-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+}
+.ep-list li:last-child { border-bottom: none; }
+.method {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-family: 'SFMono-Regular', monospace;
+  flex-shrink: 0;
+  margin-top: 2px;
+  min-width: 42px;
+  text-align: center;
+}
+.GET  { background: #E6F4EA; color: #1E6B33; }
+.POST { background: #E8EEF8; color: #1B3A8C; }
+.ep-body { flex: 1; }
+.ep-path { font-family: 'SFMono-Regular', monospace; font-size: 13px; font-weight: 600; color: var(--text); }
+.ep-desc { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.ep-auth {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-weight: 700;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.ep-auth.pub  { background: #E6F4EA; color: #1E6B33; }
+.ep-auth.auth { background: #FEF3E2; color: #9B5500; }
+
+/* ─── CALLOUT ─── */
+.callout {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  padding: 13px 18px;
+  border-radius: 0 4px 4px 0;
+  margin: 16px 0;
+  font-size: 14px;
+  max-width: 72ch;
+}
+.callout.info { border-left-color: var(--navy-mid); }
+.callout strong { color: var(--navy); }
+
+/* ─── TWO-COL ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 14px 16px;
+}
+.card-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.card-val {
+  font-size: 13.5px;
+  color: var(--text);
+  font-weight: 500;
+}
+.card-val code { background: var(--code-bg); }
+
+@media (max-width: 900px) {
+  .main { padding: 36px 28px 72px; }
+  .two-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .doc-header h1 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="school">Documentation</div>
+    <div class="name">ESCEN Website</div>
+    <span class="badge">v1.0 — Nuxt 4</span>
+  </div>
+  <nav>
+    <div class="nav-section">
+      <div class="nav-label">Introduction</div>
+      <a class="nav-link" href="#overview">Vue d'ensemble</a>
+      <a class="nav-link" href="#stack">Stack technique</a>
+      <a class="nav-link" href="#config">Configuration</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Architecture</div>
+      <a class="nav-link" href="#structure">Structure des répertoires</a>
+      <a class="nav-link" href="#routing">Pages &amp; Routage</a>
+      <a class="nav-link" href="#layouts">Layouts</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Composants</div>
+      <a class="nav-link" href="#components">Composants principaux</a>
+      <a class="nav-link" href="#stores">Stores Pinia</a>
+      <a class="nav-link" href="#plugins">Plugins</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Backend &amp; Auth</div>
+      <a class="nav-link" href="#api">API &amp; Endpoints</a>
+      <a class="nav-link" href="#auth">Authentification</a>
+      <a class="nav-link" href="#analytics">Analytics &amp; Tracking</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Référence</div>
+      <a class="nav-link" href="#env">Variables d'environnement</a>
+      <a class="nav-link" href="#todos">Notes &amp; TODO</a>
+    </div>
+  </nav>
+</aside>
+
+<!-- ─── MAIN ─── -->
+<main class="main">
+
+  <header class="doc-header">
+    <div class="eyebrow">École Supérieure de Commerce et d'Économie Numérique</div>
+    <h1>Documentation Développeur</h1>
+    <p class="sub">Architecture, composants, API et configuration du site institutionnel ESCEN. Développé par Neo Start Technology.</p>
+    <div class="meta-row">
+      <span class="meta-chip gold">Nuxt 4.2.1</span>
+      <span class="meta-chip gold">Vue 3.5.25</span>
+      <span class="meta-chip">TypeScript 5.9</span>
+      <span class="meta-chip">Pinia</span>
+      <span class="meta-chip">SSR : désactivé — Statique</span>
+      <span class="meta-chip">escen.university</span>
+    </div>
+  </header>
+
+  <!-- VUE D'ENSEMBLE -->
+  <section class="section" id="overview">
+    <div class="section-eyebrow">Introduction</div>
+    <h2>Vue d'ensemble</h2>
+    <p>Le site ESCEN est une application Vue 3 / Nuxt 4 en mode statique (CSR). Il couvre deux grandes zones fonctionnelles : le <strong>site public</strong> (catalogue des formations, blog, galerie, inscriptions) et le <strong>portail candidat</strong> sécurisé (dossier, documents, notifications).</p>
+    <div class="two-col" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-label">URL de production</div>
+        <div class="card-val">https://www.escen.university</div>
+      </div>
+      <div class="card">
+        <div class="card-label">API backend</div>
+        <div class="card-val"><code>https://escen.neostart.tech/api</code></div>
+      </div>
+      <div class="card">
+        <div class="card-label">API locale (dev)</div>
+        <div class="card-val"><code>http://localhost:8000/api</code></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Développeur</div>
+        <div class="card-val">Neo Start Technology</div>
+      </div>
+    </div>
+    <h3>Zones fonctionnelles</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Zone</th><th>Description</th><th>Auth requise</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Site public</td><td class="desc">Formations, blog, galerie, contact, brochures, inscription</td><td>Non</td></tr>
+          <tr><td class="label">Portail candidat</td><td class="desc">Dashboard, profil, documents, notifications, mot de passe</td><td>Oui — Bearer token</td></tr>
+          <tr><td class="label">Vérification</td><td class="desc">Confirmation d'email par matricule candidat</td><td>Non</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STACK TECHNIQUE -->
+  <section class="section" id="stack">
+    <div class="section-eyebrow">Fondations</div>
+    <h2>Stack technique</h2>
+    <h3>Framework &amp; Rendu</h3>
+    <div class="pill-grid">
+      <span class="pill"><span class="pill-dot c-navy"></span>Vue 3.5.25</span>
+      <span class="pill"><span class="pill-dot c-navy"></span>Nuxt 4.2.1</span>
+      <span class="pill"><span class="pill-dot c-navy"></span>TypeScript 5.9.3</span>
+      <span class="pill"><span class="pill-dot c-navy"></span>SSR : false — Static preset</span>
+    </div>
+    <h3>UI &amp; Style</h3>
+    <div class="pill-grid">
+      <span class="pill"><span class="pill-dot c-teal"></span>Tailwind CSS</span>
+      <span class="pill"><span class="pill-dot c-teal"></span>@nuxt/ui 4.2.1</span>
+      <span class="pill"><span class="pill-dot c-teal"></span>PrimeVue 4.5.5</span>
+      <span class="pill"><span class="pill-dot c-teal"></span>Thème Aura (light)</span>
+      <span class="pill"><span class="pill-dot c-teal"></span>Lucide Vue Next</span>
+      <span class="pill"><span class="pill-dot c-teal"></span>Flag Icons 7.5</span>
+    </div>
+    <h3>État &amp; Données</h3>
+    <div class="pill-grid">
+      <span class="pill"><span class="pill-dot c-purple"></span>@pinia/nuxt 0.11.3</span>
+      <span class="pill"><span class="pill-dot c-purple"></span>Axios 1.16.1</span>
+      <span class="pill"><span class="pill-dot c-purple"></span>@nuxt/content 3.8.2</span>
+    </div>
+    <h3>Formulaires &amp; UX</h3>
+    <div class="pill-grid">
+      <span class="pill"><span class="pill-dot c-green"></span>intl-tel-input 25.15</span>
+      <span class="pill"><span class="pill-dot c-green"></span>v-phone-input 5.1.4</span>
+      <span class="pill"><span class="pill-dot c-green"></span>sweetalert 2.1.2</span>
+      <span class="pill"><span class="pill-dot c-green"></span>toastr 2.1.4</span>
+      <span class="pill"><span class="pill-dot c-green"></span>countries-list 3.2.2</span>
+    </div>
+    <h3>SEO &amp; Performance</h3>
+    <div class="pill-grid">
+      <span class="pill"><span class="pill-dot c-orange"></span>@nuxtjs/sitemap 8.2.1</span>
+      <span class="pill"><span class="pill-dot c-orange"></span>@unhead/vue 2.0.19</span>
+      <span class="pill"><span class="pill-dot c-orange"></span>Schema.org JSON-LD</span>
+      <span class="pill"><span class="pill-dot c-orange"></span>Open Graph / Twitter Card</span>
+    </div>
+    <h3>Analytics</h3>
+    <div class="pill-grid">
+      <span class="pill"><span class="pill-dot c-red"></span>Meta Pixel (Facebook)</span>
+      <span class="pill"><span class="pill-dot c-red"></span>Google Analytics 4</span>
+      <span class="pill"><span class="pill-dot c-red"></span>LinkedIn Insight Tag</span>
+    </div>
+  </section>
+
+  <!-- CONFIGURATION -->
+  <section class="section" id="config">
+    <div class="section-eyebrow">Paramètres</div>
+    <h2>Configuration</h2>
+    <p>La configuration principale est répartie entre <code>nuxt.config.ts</code> (modules, runtime config, preset) et <code>config.ts</code> (URLs d'API et de stockage).</p>
+    <h3>config.ts — URLs selon l'environnement</h3>
+<pre><span class="c">// config.ts — détection automatique dev / prod</span>
+<span class="k">const isDev</span> = <span class="v">process.env.NODE_ENV === 'development'</span>
+
+<span class="k">export const API_BASE_URL</span> = isDev
+  ? <span class="s">'http://localhost:8000/api'</span>
+  : <span class="s">'https://escen.neostart.tech/api'</span>
+
+<span class="k">export const STORAGE_URL</span> = isDev
+  ? <span class="s">'http://localhost:8000/storage'</span>
+  : <span class="s">'https://escen.neostart.tech/storage'</span></pre>
+    <h3>nuxt.config.ts — Points clés</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Clé</th><th>Valeur</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">ssr</td><td><code>false</code></td><td class="desc">Rendu côté client uniquement (SPA statique)</td></tr>
+          <tr><td class="mono">srcDir</td><td><code>app/</code></td><td class="desc">Répertoire source de l'application</td></tr>
+          <tr><td class="mono">nitro.preset</td><td><code>static</code></td><td class="desc">Génération de fichiers HTML statiques</td></tr>
+          <tr><td class="mono">runtimeConfig.public.metaPixelId</td><td><code>24431732409802544</code></td><td class="desc">Facebook Pixel</td></tr>
+          <tr><td class="mono">runtimeConfig.public.gaId</td><td><code>G-X87RFP5GDP</code></td><td class="desc">Google Analytics 4</td></tr>
+          <tr><td class="mono">runtimeConfig.public.linkedinPixelId</td><td><code>8182794</code></td><td class="desc">LinkedIn Insight</td></tr>
+          <tr><td class="mono">site.url</td><td><code>escen.university</code></td><td class="desc">Génération du sitemap</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STRUCTURE -->
+  <section class="section" id="structure">
+    <div class="section-eyebrow">Architecture</div>
+    <h2>Structure des répertoires</h2>
+    <div class="tree"><span class="d">escen-website/</span>
+├── <span class="d">app/</span>                      <span class="c">← Répertoire source (srcDir)</span>
+│   ├── <span class="d">components/</span>            <span class="c">← Composants réutilisables</span>
+│   ├── <span class="d">layouts/</span>               <span class="c">← Layouts (default, auth, candidat)</span>
+│   ├── <span class="d">pages/</span>                 <span class="c">← Routage basé sur les fichiers</span>
+│   ├── <span class="d">plugins/</span>               <span class="c">← axios.ts, pixels.client.ts, intl-tel-input.client.js</span>
+│   ├── <span class="d">stores/</span>                <span class="c">← Stores Pinia</span>
+│   ├── <span class="d">utils/</span>                 <span class="c">← Fonctions utilitaires et données statiques</span>
+│   ├── <span class="d">public/</span>                <span class="c">← Assets statiques spécifiques à l'app</span>
+│   ├── <span class="p">app.vue</span>                <span class="c">← Composant racine, meta SEO globaux</span>
+│   ├── <span class="p">app.html</span>               <span class="c">← Template HTML personnalisé</span>
+│   └── <span class="p">router.options.ts</span>      <span class="c">← Configuration du routeur</span>
+├── <span class="d">public/</span>                    <span class="c">← Assets statiques globaux</span>
+│   ├── <span class="d">logo/</span>                  <span class="c">← Logos ESCEN</span>
+│   ├── <span class="d">formations/</span>            <span class="c">← Images des formations</span>
+│   ├── <span class="d">slider/</span>                <span class="c">← Images du carousel homepage</span>
+│   ├── <span class="d">album/</span>                 <span class="c">← Galeries photo</span>
+│   ├── <span class="d">temoignage/</span>            <span class="c">← Photos des témoignages</span>
+│   ├── <span class="d">payspartenaire/</span>        <span class="c">← Drapeaux des pays partenaires</span>
+│   └── <span class="d">pdf/</span>                   <span class="c">← Brochures PDF</span>
+├── <span class="d">docs/</span>                      <span class="c">← Cette documentation</span>
+├── <span class="d">server/</span>                    <span class="c">← Serveur Nitro (minimal)</span>
+├── <span class="p">nuxt.config.ts</span>
+├── <span class="p">config.ts</span>
+└── <span class="p">package.json</span></div>
+  </section>
+
+  <!-- ROUTAGE -->
+  <section class="section" id="routing">
+    <div class="section-eyebrow">Architecture</div>
+    <h2>Pages &amp; Routage</h2>
+    <p>Le routage est entièrement basé sur les fichiers dans <code>app/pages/</code>. Les pages publiques utilisent le layout <code>default</code>, le portail candidat utilise le layout <code>candidat</code>.</p>
+    <h3>Pages publiques</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Route</th><th>Fichier</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">/</td><td><code>index.vue</code></td><td class="desc">Accueil — slider, valeurs, témoignages, galerie</td></tr>
+          <tr><td class="mono">/formations</td><td><code>formations/index.vue</code></td><td class="desc">Catalogue complet des formations</td></tr>
+          <tr><td class="mono">/formations/licence-professionnelle</td><td><code>licence-professionnelle/index.vue</code></td><td class="desc">Licences — Finance, IA, Management, Marketing</td></tr>
+          <tr><td class="mono">/formations/master-professionnel</td><td><code>master-professionnel/index.vue</code></td><td class="desc">Masters — Finance, Management, Marketing</td></tr>
+          <tr><td class="mono">/formations/executive-education</td><td><code>executive-education/index.vue</code></td><td class="desc">Formation continue Executive</td></tr>
+          <tr><td class="mono">/formations/certificats</td><td><code>certificats/index.vue</code></td><td class="desc">Certificats professionnels</td></tr>
+          <tr><td class="mono">/blogs</td><td><code>blogs/index.vue</code></td><td class="desc">Liste des articles du blog</td></tr>
+          <tr><td class="mono">/blogs/[id]</td><td><code>blogs/[id].vue</code></td><td class="desc">Article de blog (route dynamique)</td></tr>
+          <tr><td class="mono">/galerie</td><td><code>galerie/index.vue</code></td><td class="desc">Liste des albums photo</td></tr>
+          <tr><td class="mono">/galerie/[slug]</td><td><code>galerie/[slug].vue</code></td><td class="desc">Album photo détail (route dynamique)</td></tr>
+          <tr><td class="mono">/contact</td><td><code>contact.vue</code></td><td class="desc">Formulaire de contact</td></tr>
+          <tr><td class="mono">/inscription</td><td><code>inscription/index.vue</code></td><td class="desc">Formulaire de candidature multi-étapes</td></tr>
+          <tr><td class="mono">/verif/[matricule]</td><td><code>verif/[matricule].vue</code></td><td class="desc">Vérification d'email par matricule</td></tr>
+          <tr><td class="mono">/cgu</td><td><code>cgu.vue</code></td><td class="desc">Conditions générales d'utilisation</td></tr>
+          <tr><td class="mono">/confidentialite</td><td><code>confidentialite.vue</code></td><td class="desc">Politique de confidentialité</td></tr>
+          <tr><td class="mono">/mentions-legales</td><td><code>mentions-legales.vue</code></td><td class="desc">Mentions légales</td></tr>
+          <tr><td class="mono">/politique-cookies</td><td><code>politique-cookies.vue</code></td><td class="desc">Politique cookies (RGPD)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Portail candidat (layout candidat — auth requise)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Route</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">/candidat/login</td><td class="desc">Connexion candidat (layout auth)</td></tr>
+          <tr><td class="mono">/candidat/dashboard</td><td class="desc">Tableau de bord — statut dossier, timeline, rectifications</td></tr>
+          <tr><td class="mono">/candidat/profil</td><td class="desc">Informations personnelles — lecture et modification</td></tr>
+          <tr><td class="mono">/candidat/documents</td><td class="desc">Upload et gestion des pièces justificatives</td></tr>
+          <tr><td class="mono">/candidat/notifications</td><td class="desc">Centre de notifications</td></tr>
+          <tr><td class="mono">/candidat/mot-de-passe-oublie</td><td class="desc">Demande de réinitialisation de mot de passe</td></tr>
+          <tr><td class="mono">/candidat/reinitialiser-mot-de-passe</td><td class="desc">Saisie du nouveau mot de passe</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- LAYOUTS -->
+  <section class="section" id="layouts">
+    <div class="section-eyebrow">Architecture</div>
+    <h2>Layouts</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Layout</th><th>Utilisé par</th><th>Éléments inclus</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="label">default</td>
+            <td class="desc">Toutes les pages publiques</td>
+            <td class="desc"><code>&lt;Header&gt;</code>, <code>&lt;Footer&gt;</code>, <code>&lt;CookieBanner&gt;</code>, bouton scroll-to-top</td>
+          </tr>
+          <tr>
+            <td class="label">auth</td>
+            <td class="desc">/inscription, /candidat/login</td>
+            <td class="desc">Layout minimal sans header/footer</td>
+          </tr>
+          <tr>
+            <td class="label">candidat</td>
+            <td class="desc">Portail candidat (/candidat/*)</td>
+            <td class="desc">Sidebar de navigation, dropdown profil, centre de notifications, badge logout</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout info" style="margin-top:16px;">
+      <strong>Guard de navigation :</strong> Le layout <code>candidat</code> vérifie la présence de <code>candidat_token</code> dans le <code>localStorage</code>. En l'absence du token, l'utilisateur est redirigé vers <code>/candidat/login</code>.
+    </div>
+  </section>
+
+  <!-- COMPOSANTS -->
+  <section class="section" id="components">
+    <div class="section-eyebrow">Interface</div>
+    <h2>Composants principaux</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Composant</th><th>Taille</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">Header.vue</td><td>42 Ko</td><td class="desc">Navigation principale — barre supérieure (email, téléphone, horaires), menu avec dropdown formations, logo, lien espace étudiant. Position fixe avec effet au scroll.</td></tr>
+          <tr><td class="mono">Footer.vue</td><td>13 Ko</td><td class="desc">Pied de page multi-colonnes — logo, réseaux sociaux, liens rapides, formations, coordonnées.</td></tr>
+          <tr><td class="mono">BrochureModal.vue</td><td>—</td><td class="desc">Modal de téléchargement de brochure. Collecte nom, email, téléphone (intl-tel-input). POST vers <code>/public/brochures/request</code>.</td></tr>
+          <tr><td class="mono">CookieBanner.vue</td><td>—</td><td class="desc">Bandeau de consentement RGPD. Stocke le consentement dans <code>localStorage.escen_cookie_consent</code>. Contrôle l'initialisation des pixels analytics.</td></tr>
+          <tr><td class="mono">Slider.vue</td><td>—</td><td class="desc">Carousel hero de la page d'accueil avec rotation automatique.</td></tr>
+          <tr><td class="mono">Temoignage.vue</td><td>—</td><td class="desc">Section témoignages d'étudiants.</td></tr>
+          <tr><td class="mono">GaleriePreview.vue</td><td>—</td><td class="desc">Aperçu de la galerie photo avec thumbnails sur la homepage.</td></tr>
+          <tr><td class="mono">PartenairesFlag.vue</td><td>—</td><td class="desc">Affichage des pays partenaires avec drapeaux via la librairie flag-icons.</td></tr>
+          <tr><td class="mono">Breadcrumb.vue</td><td>—</td><td class="desc">Fil d'Ariane — composant de navigation contextuelle.</td></tr>
+          <tr><td class="mono">Cta.vue</td><td>—</td><td class="desc">Section call-to-action avec statistiques de l'école.</td></tr>
+          <tr><td class="mono">TypewriterText.vue</td><td>—</td><td class="desc">Animation de texte effet machine à écrire.</td></tr>
+          <tr><td class="mono">GlobalLoader.vue</td><td>—</td><td class="desc">Indicateur de chargement global.</td></tr>
+          <tr><td class="mono">AboutUS.vue</td><td>—</td><td class="desc">Section présentation institutionnelle de l'école.</td></tr>
+          <tr><td class="mono">NosValeurs.vue</td><td>—</td><td class="desc">Valeurs et mission de l'établissement.</td></tr>
+          <tr><td class="mono">Vision.vue</td><td>—</td><td class="desc">Vision et orientation stratégique de l'école.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STORES -->
+  <section class="section" id="stores">
+    <div class="section-eyebrow">État</div>
+    <h2>Stores Pinia</h2>
+    <p>Tous les stores sont dans <code>app/stores/</code>. Chaque store encapsule les appels API et l'état associé.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Store</th><th>État</th><th>Actions principales</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">blog.ts</td><td class="desc"><code>articles[]</code>, <code>currentArticle</code>, <code>loading</code>, <code>error</code></td><td class="desc"><code>fetchArticles()</code>, <code>fetchArticleById(id)</code>, <code>addComment(id, data)</code>, <code>subscribeNewsletter(email)</code></td></tr>
+          <tr><td class="mono">candidature.ts</td><td class="desc"><code>isLoading</code>, <code>error</code></td><td class="desc"><code>soumettreCandidature(formData)</code> — multipart/form-data</td></tr>
+          <tr><td class="mono">configuration.ts</td><td class="desc"><code>parametres[]</code></td><td class="desc"><code>fetchConfigurations()</code>, <code>getParamValue(key)</code></td></tr>
+          <tr><td class="mono">gallery.ts</td><td class="desc"><code>albums[]</code>, <code>currentAlbum</code>, <code>otherAlbums</code>, <code>loading</code></td><td class="desc"><code>fetchAlbums()</code>, <code>fetchAlbumById(id)</code></td></tr>
+          <tr><td class="mono">filiere.ts</td><td class="desc"><code>filieres[]</code>, <code>isLoading</code>, <code>error</code></td><td class="desc"><code>fetchFilieresByNiveau(niveauId)</code></td></tr>
+          <tr><td class="mono">niveau.ts</td><td class="desc"><code>niveaux[]</code>, <code>isLoading</code>, <code>error</code></td><td class="desc"><code>fetchNiveaux()</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PLUGINS -->
+  <section class="section" id="plugins">
+    <div class="section-eyebrow">Configuration</div>
+    <h2>Plugins</h2>
+    <h3>axios.ts</h3>
+    <p>Configure l'instance Axios globale avec la base URL (dev/prod), l'injection automatique du Bearer token depuis <code>localStorage.candidat_token</code>, et la gestion des erreurs 401 (déconnexion + redirect vers <code>/candidat/login</code>).</p>
+<pre><span class="c">// Comportement du plugin axios</span>
+<span class="k">baseURL</span>: <span class="v">API_BASE_URL</span>  <span class="c">// depuis config.ts</span>
+
+<span class="c">// Intercepteur request</span>
+<span class="k">config.headers.Authorization</span> = <span class="v">`Bearer ${localStorage.candidat_token}`</span>
+
+<span class="c">// Intercepteur response — erreur 401</span>
+localStorage.<span class="k">removeItem</span>(<span class="s">'candidat_token'</span>)
+localStorage.<span class="k">removeItem</span>(<span class="s">'candidat_info'</span>)
+router.<span class="k">push</span>(<span class="s">'/candidat/login'</span>)</pre>
+    <h3>pixels.client.ts</h3>
+    <p>Initialise les trois systèmes de tracking uniquement après le consentement cookies. Écoute l'événement <code>cookies-accepted</code> sur <code>window</code> et suit les changements de route pour le tracking SPA.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Pixel</th><th>Déclencheur</th><th>Condition</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Meta Pixel</td><td><code>fbq('init', pixelId)</code></td><td class="desc">consentement localStorage OU événement <code>cookies-accepted</code></td></tr>
+          <tr><td class="label">Google Analytics</td><td><code>gtag('config', gaId)</code></td><td class="desc">idem</td></tr>
+          <tr><td class="label">LinkedIn Insight</td><td><code>_linkedin_partner_id</code></td><td class="desc">idem</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>intl-tel-input.client.js</h3>
+    <p>Expose <code>$intlTelInput</code> aux composants. Permet la saisie de numéros de téléphone internationaux avec sélection du pays et validation du format.</p>
+  </section>
+
+  <!-- API -->
+  <section class="section" id="api">
+    <div class="section-eyebrow">Backend</div>
+    <h2>API &amp; Endpoints</h2>
+    <p>Tous les appels API passent par le plugin Axios. L'URL de base est <code>https://escen.neostart.tech/api</code> en production.</p>
+    <h3>Endpoints publics <span class="ep-auth pub">PUBLIC</span></h3>
+    <ul class="ep-list">
+      <li><span class="method GET">GET</span><div class="ep-body"><div class="ep-path">/public/blogs</div><div class="ep-desc">Liste tous les articles du blog</div></div></li>
+      <li><span class="method GET">GET</span><div class="ep-body"><div class="ep-path">/public/blogs/{id}</div><div class="ep-desc">Détail d'un article de blog</div></div></li>
+      <li><span class="method POST">POST</span><div class="ep-body"><div class="ep-path">/public/blogs/{id}/comments</div><div class="ep-desc">Ajouter un commentaire sur un article</div></div></li>
+      <li><span class="method POST">POST</span><div class="ep-body"><div class="ep-path">/public/newsletter/subscribe</div><div class="ep-desc">Inscription à la newsletter (body: <code>{ email }</code>)</div></div></li>
+      <li><span class="method GET">GET</span><div class="ep-body"><div class="ep-path">/public/galeries</div><div class="ep-desc">Liste des albums photo</div></div></li>
+      <li><span class="method GET">GET</span><div class="ep-body"><div class="ep-path">/public/galeries/{id}</div><div class="ep-desc">Album photo avec ses images</div></div></li>
+      <li><span class="method GET">GET</span><div class="ep-body"><div class="ep-path">/public/configurations</div><div class="ep-desc">Paramètres de configuration de l'application</div></div></li>
+      <li><span class="method GET">GET</span><div class="ep-body"><div class="ep-path">/public/niveau/liste</div><div class="ep-desc">Liste des niveaux d'études (Licence, Master, etc.)</div></div></li>
+      <li><span class="method GET">GET</span><div class="ep-body"><div class="ep-path">/public/filieres/liste?niveau_id={id}</div><div class="ep-desc">Filières par niveau d'études</div></div></li>
+      <li><span class="method POST">POST</span><div class="ep-body"><div class="ep-path">/public/candidature/soumettre</div><div class="ep-desc">Soumission du dossier de candidature — <code>multipart/form-data</code></div></div></li>
+      <li><span class="method POST">POST</span><div class="ep-body"><div class="ep-path">/public/brochures/request</div><div class="ep-desc">Demande de téléchargement de brochure (nom, email, téléphone)</div></div></li>
+    </ul>
+    <h3>Endpoints protégés <span class="ep-auth auth">AUTH</span></h3>
+    <ul class="ep-list">
+      <li><span class="method GET">GET</span><div class="ep-body"><div class="ep-path">/mon-dossier/notifications</div><div class="ep-desc">Notifications du candidat connecté</div></div></li>
+      <li><span class="method POST">POST</span><div class="ep-body"><div class="ep-path">/me-deconnecter</div><div class="ep-desc">Déconnexion — invalide le token côté serveur</div></div></li>
+    </ul>
+    <div class="callout">
+      <strong>Authentification :</strong> Tous les endpoints <code>/mon-dossier/*</code> requièrent le header <code>Authorization: Bearer {candidat_token}</code>. Le plugin Axios l'injecte automatiquement.
+    </div>
+  </section>
+
+  <!-- AUTH -->
+  <section class="section" id="auth">
+    <div class="section-eyebrow">Sécurité</div>
+    <h2>Authentification</h2>
+    <p>L'authentification est basée sur un token Bearer stocké côté client. Il n'y a pas de cookie de session — le token est géré exclusivement via <code>localStorage</code>.</p>
+    <h3>Flux de connexion</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Étape</th><th>Action</th><th>Stockage</th></tr></thead>
+        <tbody>
+          <tr><td class="label">1. Login</td><td class="desc">POST credentials → <code>/candidat/login</code></td><td>—</td></tr>
+          <tr><td class="label">2. Token reçu</td><td class="desc">Le backend retourne un token</td><td><code>localStorage.candidat_token</code></td></tr>
+          <tr><td class="label">3. Profil reçu</td><td class="desc">Informations du candidat stockées</td><td><code>localStorage.candidat_info</code> (JSON)</td></tr>
+          <tr><td class="label">4. Requêtes suivantes</td><td class="desc">Axios injecte automatiquement le Bearer token</td><td>—</td></tr>
+          <tr><td class="label">5. Erreur 401</td><td class="desc">Token expiré ou invalide détecté par l'intercepteur</td><td>Nettoyage localStorage + redirect login</td></tr>
+          <tr><td class="label">6. Déconnexion</td><td class="desc">POST <code>/me-deconnecter</code> puis nettoyage local</td><td>Suppression des deux clés localStorage</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ANALYTICS -->
+  <section class="section" id="analytics">
+    <div class="section-eyebrow">Tracking</div>
+    <h2>Analytics &amp; Tracking</h2>
+    <p>Les trois pixels sont initialisés par le plugin <code>pixels.client.ts</code> uniquement après accord explicite du visiteur via le bandeau RGPD.</p>
+    <div class="callout info">
+      <strong>Conformité RGPD :</strong> Le plugin vérifie <code>localStorage.escen_cookie_consent</code> au chargement et écoute l'événement <code>window.cookies-accepted</code>. Aucun pixel n'est déclenché avant le consentement.
+    </div>
+    <div class="tbl-wrap" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>Service</th><th>Identifiant</th><th>Événements trackés</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Meta Pixel</td><td class="mono" style="font-size:12px;">24431732409802544</td><td class="desc">PageView, changements de route SPA</td></tr>
+          <tr><td class="label">Google Analytics 4</td><td class="mono" style="font-size:12px;">G-X87RFP5GDP</td><td class="desc">page_view, changements de route SPA</td></tr>
+          <tr><td class="label">LinkedIn Insight</td><td class="mono" style="font-size:12px;">8182794</td><td class="desc">Conversions, audiences LinkedIn</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ENV -->
+  <section class="section" id="env">
+    <div class="section-eyebrow">Référence</div>
+    <h2>Variables d'environnement</h2>
+    <p>Les identifiants de tracking sont exposés via <code>runtimeConfig.public</code> dans <code>nuxt.config.ts</code> et chargés depuis <code>.env</code>.</p>
+<pre><span class="c"># .env</span>
+<span class="k">NUXT_PUBLIC_META_PIXEL_ID</span>=<span class="v">24431732409802544</span>
+<span class="k">NUXT_PUBLIC_GA_ID</span>=<span class="v">G-X87RFP5GDP</span>
+<span class="k">NUXT_PUBLIC_LINKEDIN_PIXEL_ID</span>=<span class="v">8182794</span></pre>
+    <div class="callout">
+      <strong>Note :</strong> <code>API_BASE_URL</code> et <code>STORAGE_URL</code> sont définis directement dans <code>config.ts</code> en fonction de <code>NODE_ENV</code> — pas de variable d'environnement dédiée requise pour ces URLs.
+    </div>
+  </section>
+
+  <!-- TODOS -->
+  <section class="section" id="todos">
+    <div class="section-eyebrow">En cours</div>
+    <h2>Notes &amp; TODO</h2>
+    <p>Points identifiés en cours de développement, issus des fichiers de notes internes.</p>
+    <h3>Formulaire d'inscription</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Détail</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Sauvegarde étape 1</td><td class="desc">Enregistrer les infos d'identité en base avant de passer aux étapes suivantes</td></tr>
+          <tr><td class="label">Logique BAC / BTS</td><td class="desc">BAC → afficher champ "série" ; BTS/Licence/Master → afficher "domaine d'études"</td></tr>
+          <tr><td class="label">Indicatif téléphonique</td><td class="desc">Ajouter la sélection d'indicatif pays dans la modale brochure</td></tr>
+          <tr><td class="label">Email admin</td><td class="desc">Envoyer un email à <code>admission@escen.university</code> à chaque nouvelle candidature</td></tr>
+          <tr><td class="label">Export Excel</td><td class="desc">Exporter les inscriptions et téléchargements de brochures en format Excel</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Dashboard finance</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Détail</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Notification examens</td><td class="desc">Alerter l'équipe finance 1 semaine avant les examens</td></tr>
+          <tr><td class="label">Frais de désistement</td><td class="desc">Ajouter les frais de désistement dans le tableau financier</td></tr>
+          <tr><td class="label">Licence 3 en ligne</td><td class="desc">Séparer la Licence 3 en ligne des autres programmes dans les filtres</td></tr>
+          <tr><td class="label">Mode hybride</td><td class="desc">Ajouter l'option de mode hybride dans la sélection de formation</td></tr>
+          <tr><td class="label">Filtres avancés</td><td class="desc">Filtrage par niveau et filière dans le calendrier de paiement</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Améliorations diverses</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Détail</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Tracking brochures</td><td class="desc">Enregistrer les téléchargements de brochures par utilisateur</td></tr>
+          <tr><td class="label">Cookie analytics</td><td class="desc">Améliorer le suivi des visiteurs via les cookies</td></tr>
+          <tr><td class="label">Executive Master</td><td class="desc">Corriger le texte et les problèmes de coupure d'image</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
