@@ -193,12 +193,12 @@
 </template>
 
 <script setup>
-definePageMeta({ redirect: '/inscription' })
 
 
-import { ref, reactive, computed, onMounted, watch } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 import { useNuxtApp } from '#app'
 import { useNiveauStore } from '~/stores/niveau'
+defineOptions({ name: 'RegistrationPreparationPage' })
 
 const niveauStore = useNiveauStore()
 
@@ -227,7 +227,7 @@ const loadCheckedState = () => {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
     if (raw) Object.assign(checkedState, JSON.parse(raw))
-  } catch (e) {
+  } catch {
     // stockage indisponible : la checklist reste simplement non persistée
   }
 }
@@ -235,7 +235,7 @@ const loadCheckedState = () => {
 const persistCheckedState = () => {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedState))
-  } catch (e) {
+  } catch {
     // ignore
   }
 }
