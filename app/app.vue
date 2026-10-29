@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout><NuxtPage /><WebsiteActions v-if="!privatePage" /></NuxtLayout>
+  <NuxtLayout><div class="website-page-container"><NuxtPage /></div><WebsiteActions v-if="!privatePage" /></NuxtLayout>
 </template>
 
 <script setup>
