@@ -3,6 +3,7 @@
     <!-- Background image avec overlay -->
     <div class="absolute inset-0">
       <img
+        loading="lazy" decoding="async"
         src="/valeurs/bg.jpg"
         alt="Background valeurs ESCEN"
         class="w-full h-full object-cover"

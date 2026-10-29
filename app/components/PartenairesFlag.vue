@@ -47,11 +47,12 @@
         <div class="overflow-hidden">
           <div class="flex gap-10 marquee-track" style="width: max-content">
             <!-- Double liste pour loop parfaite -->
-            <div v-for="country in [...countries, ...countries]"
-                 :key="country.name + Math.random()"
+            <div v-for="(country, index) in [...countries, ...countries]"
+                 :key="`${country.name}-${index}`"
                  class="flex flex-col items-center flex-shrink-0 group cursor-default">
               <div class="website-country-flag overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-400 group-hover:-translate-y-1 border border-gray-100">
                 <img
+                  loading="lazy" decoding="async"
                   :src="country.flag"
                   :alt="`Drapeau ${country.name}`"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

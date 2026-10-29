@@ -150,8 +150,13 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useConfigurationStore } from '~/stores/configuration'
 
+defineOptions({ name: 'EscenVision' })
+
 const configStore = useConfigurationStore()
-await useAsyncData('configurations', () => configStore.fetchConfigurations())
+useLazyAsyncData('configurations', async () => {
+  await configStore.fetchConfigurations()
+  return configStore.parametres
+}, { server: false })
 
 const visionSection = ref(null)
 const isVisible = ref(false)

@@ -43,7 +43,7 @@
           <NuxtLink :to="`/galerie/${album.slug}`" class="group relative block w-full h-full rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
             
             <!-- Image with smooth scale on hover -->
-            <img :src="getFileUrl(album.cover_url || album.cover) || '/valeurs/bg.jpg'" 
+            <img loading="lazy" decoding="async" :src="getFileUrl(album.cover_url || album.cover) || '/valeurs/bg.jpg'" 
                  :alt="album.title"
                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
             
@@ -135,7 +135,7 @@ const getFileUrl = (path) => {
 
   if (path.startsWith('http')) return path;
   
-  let cleanPath = path.replace(/^\/+/, '').trim();
+  const cleanPath = path.replace(/^\/+/, '').trim();
   if (!cleanPath || cleanPath === 'storage' || cleanPath === 'storage/') return null;
   if (cleanPath.startsWith('storage/')) {
     return `${baseUrl}/${cleanPath}`;
