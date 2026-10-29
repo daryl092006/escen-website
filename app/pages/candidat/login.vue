@@ -76,7 +76,7 @@
             </div>
 
             <div class="mt-6">
-              <NuxtLink to="/preparation-inscription" class="w-full flex justify-center py-3.5 px-4 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-600 bg-white hover:bg-gray-50 hover:border-gray-300 hover:text-[#1A2238] transition-all duration-300">
+              <NuxtLink to="/inscription" class="w-full flex justify-center py-3.5 px-4 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-600 bg-white hover:bg-gray-50 hover:border-gray-300 hover:text-[#1A2238] transition-all duration-300">
                 Déposer ma candidature
               </NuxtLink>
             </div>

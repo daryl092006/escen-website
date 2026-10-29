@@ -26,12 +26,6 @@
             acceptées pour cette procédure.
           </p>
         </div>
-        <NuxtLink
-          to="/preparation-inscription"
-          target="_blank"
-          class="left-doc-link"
-          >Voir la liste des documents à préparer →</NuxtLink
-        >
       </div>
     </aside>
     <section class="right-panel">

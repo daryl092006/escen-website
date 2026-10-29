@@ -323,7 +323,7 @@
           <!-- Section Droite (CTA + Mobile Toggle) -->
           <div class="flex items-center gap-4 relative z-10">
             <!-- Bouton CTA -->
-            <NuxtLink to="/preparation-inscription"
+            <NuxtLink to="/inscription"
               class="website-header-cta hidden lg:flex group relative px-6 py-2.5 overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105">
               <span class="absolute inset-0 bg-gradient-to-r from-[#01b4d5] to-[#0095b0]"></span>
               <span
@@ -476,7 +476,7 @@
 
           <!-- Bouton Inscription -->
           <div class="pt-3">
-            <NuxtLink to="/preparation-inscription" @click="isMobileMenuOpen = false"
+            <NuxtLink to="/inscription" @click="isMobileMenuOpen = false"
                       class="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#01b4d5] hover:bg-[#019fbf] text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-[#01b4d5]/25">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>

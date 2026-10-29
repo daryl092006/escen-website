@@ -202,7 +202,7 @@
                     Rejoignez l'ESCEN et bénéficiez d'une formation d'excellence aux métiers du numérique
                 </p>
                 <NuxtLink
-                to="/preparation-inscription"
+                to="/inscription"
                 class="inline-block bg-white text-[#01b4d5] hover:bg-gray-100 px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl transform hover:shadow-2xl"
                 >
                 S'inscrire maintenant

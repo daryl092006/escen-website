@@ -312,7 +312,7 @@
           </button>
 
           <NuxtLink
-            to="/preparation-inscription"
+            to="/inscription"
             class="w-full bg-gradient-to-r from-[#00b3d4] to-[#0056b3] hover:from-[#0056b3] hover:to-[#202a51] text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3"
             >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
