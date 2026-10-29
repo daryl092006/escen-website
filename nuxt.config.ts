@@ -52,7 +52,10 @@ export default defineNuxtConfig({
           content: "L'ESCEN forme les leaders de demain aux enjeux du commerce et de l'économie numérique.",
         },
       ],
-      link: [{ rel: "icon", type: "image/png", href: "/logo-escen.png" }],
+      link: [
+        { rel: "icon", type: "image/png", sizes: "512x512", href: "/logo/LOGO_ESCEN.png" },
+        { rel: "apple-touch-icon", href: "/logo/LOGO_ESCEN.png" },
+      ],
     },
   },
 
