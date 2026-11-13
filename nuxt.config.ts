@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     devProxy: {
-      '/api/website': { target: 'http://127.0.0.1:3000/api/website', changeOrigin: true },
+      '/api/website': { target: 'https://portail.escen.university/api/website', changeOrigin: true },
     },
     preset: "static",
     output: {
