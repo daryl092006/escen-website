@@ -212,7 +212,7 @@
         </section>
 
         <!-- Modal Brochure -->
-        <BrochureModal :isOpen="isModalOpen" :brochureName="selectedBrochureTitle" @close="isModalOpen = false" @submit="handleBrochureSubmit" />
+        <BrochureModal :formation-path="selectedFormationPath" :isOpen="isModalOpen" :brochureName="selectedBrochureTitle" @close="isModalOpen = false" @submit="handleBrochureSubmit" />
     </div>
 </template>
 
@@ -232,6 +232,7 @@ const itemsPerPage = ref(4)
 const isModalOpen = ref(false)
 const selectedBrochureUrl = ref('')
 const selectedBrochureTitle = ref('')
+const selectedFormationPath = ref('')
 const downloadingId = ref(null)
 
 const openBrochureModal = (url, title) => {
@@ -241,6 +242,7 @@ const openBrochureModal = (url, title) => {
 }
 
 const handleDownloadClick = (formation) => {
+  selectedFormationPath.value = formation.detailsUrl || ''
   openBrochureModal(formation.brochure, formation.type + ' - ' + formation.titre)
 };
 
